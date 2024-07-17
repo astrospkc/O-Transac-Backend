@@ -1,0 +1,1 @@
+The exec() method in Mongoose is used to execute a query and return a promise that resolves to the query result. It is typically used with asynchronous operations to handle the query result.
