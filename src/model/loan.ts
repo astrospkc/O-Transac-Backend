@@ -1,28 +1,8 @@
+import { ObjectId } from 'mongodb'
 import mongoose from 'mongoose'
 const { Schema } = mongoose
 
-const PaymentSchema = new Schema({
-    id: {
-        type: Number,
-        required: true
-    },
-    loanId: {
-        type: Number,
-        required: true
-    },
-    amount: {
-        type: Number,
-        required: true
-    },
-    paymentDate: {
-        type: Date,
-        required: true
-    },
-    paymentType: {
-        type: String,
-        required: true
-    }
-});
+
 
 
 const LoanSchema = new Schema({
@@ -30,25 +10,41 @@ const LoanSchema = new Schema({
     //     type: Number,
     //     required: true
     // },
-    PrincipleAmount: {
+    accountNumber: {
         type: Number,
         required: true
+
     },
-    RevisedPrincipleAmount: {
-        type: Number,
-        required: true
-    },
-    RateOfInterest: {
+    principleAmount: {
         type: Number,
         required: true
     },
 
-    Duration: {
-        type: Date,
+    loanType: {
+        type: String,
         required: true
     },
-    Payment: [PaymentSchema],
+    rateOfInterest: {
+        type: Number,
+        required: true
+    },
 
+    duration: {
+        type: Number,
+        required: true
+    },
+    amountToBePaid: {
+        type: Number,
+        required: true
+    },
+    emi_per_month: {
+        type: Number,
+        required: true
+    },
+    monthly_interest: {
+        type: Number,
+        required: true
+    }
 
 })
 

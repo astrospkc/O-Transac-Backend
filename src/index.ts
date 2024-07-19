@@ -3,6 +3,9 @@ import express, { application } from 'express';
 import connectToMongo from "./db"
 import customerRouter from "./routes/customer"
 import accountRouter from "./routes/account"
+import loanRouter from "./routes/loan"
+import payLoanRouter from "./routes/payment"
+import loanStatusRouter from "./routes/loanStatus"
 import mongoose from 'mongoose';
 import cors from 'cors';
 
@@ -21,7 +24,14 @@ app.get('/', (req: express.Request, res: express.Response) => {
     console.log("hello world")
 });
 
-app.use('/api/customer', accountRouter)
+
+
+app.use('/api', loanStatusRouter)
+app.use('/api', payLoanRouter)
+
+app.use('/api/loan', loanRouter)
+
+app.use('/api/account', accountRouter)
 
 app.use('/api/customer', customerRouter) // user connected
 

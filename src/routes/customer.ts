@@ -11,21 +11,14 @@ const router = express.Router()
 async function createCustomer(req: express.Request, res: express.Response) {
     try {
 
-        let id = nanoid()
-
-        let existingCustomer = await Customer.findOne({ id: id }).exec()
-        while (existingCustomer) {
-            id = nanoid();
-            existingCustomer = Customer.findOne({ id: id }).exec()
-        }
         const customer = await Customer.create({
-            id: id,
             name: req.body.name,
             email: req.body.email,
             password: req.body.password
         })
         await customer.save()
         console.log(customer)
+        res.json(customer)
         res.send("customer created successfully")
     } catch (error) {
         console.log(error)

@@ -4,6 +4,10 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const AccountSchema = new Schema({
+    customer_id: {
+        type: String,
+        required: true
+    },
     accountNumber: {
         type: String,
         required: true
